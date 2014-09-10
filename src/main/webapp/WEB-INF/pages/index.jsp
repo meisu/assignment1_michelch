@@ -17,6 +17,8 @@ h1 {
 <h1>${message}</h1>
 <h2>Leave a message</h2>
  
+<p>${message1}</p>
+ 
 <form name="input" action="/assignment1_michelch/send" method="get">
 Message content: <input type="text" name="content">
 <input type="submit" value="Submit">

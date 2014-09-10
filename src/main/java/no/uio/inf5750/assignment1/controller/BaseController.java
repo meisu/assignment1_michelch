@@ -23,7 +23,7 @@ public class BaseController {
         @RequestMapping(value="/", method = RequestMethod.GET)
         public String welcome(ModelMap model) {
  
-                model.addAttribute("message", "Welcome to Michelle's page");
+                model.addAttribute("message", "Michelle's page");
                 
                 //Spring uses InternalResourceViewResolver and return back index.jsp
                 return "index";
@@ -38,7 +38,8 @@ public class BaseController {
                 Message msg = new Message();
                 msg.setContent(content);
                 int id = messageDao.save(msg);
-                model.addAttribute("message", "You have " + id + " stored messages");
+                model.addAttribute("message", "Michelle's page");
+                model.addAttribute("message1", "You have " + id + " stored messages");
                 return "index";
  
         }
@@ -50,11 +51,13 @@ public class BaseController {
         public String read(ModelMap model) {
  
                 Message message = messageDao.getLast();
+                model.addAttribute("message", "Michelle's page");
+
                 if (message != null) {
-                        model.addAttribute("message", "The last message was: "+message.getContent());
+                        model.addAttribute("message1", "The latest message was: "+message.getContent());
                 }
                 else {
-                        model.addAttribute("message", "No message found");                        
+                        model.addAttribute("message1", "No message found");                        
                 }
  
                 //Spring uses InternalResourceViewResolver and return back index.jsp
@@ -68,11 +71,12 @@ public class BaseController {
         public String readId(@PathVariable int id, ModelMap model) {
  
                 Message message = messageDao.get(id);
+                model.addAttribute("message", "Michelle's page");
                 if (message != null) {
-                        model.addAttribute("message", "Message number "+id+" was: "+message.getContent());
+                        model.addAttribute("message1", "Message number "+id+" was: "+message.getContent());
                 }
                 else {
-                        model.addAttribute("message", "No message found");                        
+                        model.addAttribute("message1", "No message found");                        
                 }
  
                 //Spring uses InternalResourceViewResolver and return back index.jsp
